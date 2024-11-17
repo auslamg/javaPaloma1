@@ -1,0 +1,20 @@
+package ej7;
+import java.util.Scanner;
+
+
+public class Ejercicio7 {
+	public static  void main(String[] args) {
+		int savedValue = 0;
+		int newValue = 0;
+
+		Scanner textScanner = new Scanner(System.in);
+
+		
+		do { 
+			savedValue = newValue;
+			System.out.println("Give me a new number");
+			newValue = textScanner.nextInt();
+		} while (newValue > savedValue);
+	}
+
+}
