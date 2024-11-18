@@ -1,7 +1,5 @@
 package puntos;
 
-import puntos.Circulo.Color;
-
 public class Circulo {
 
 	Coordenadas position;
