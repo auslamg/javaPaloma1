@@ -4,5 +4,5 @@
 /**
  * 
  */
-module EjerciciosClase {
+module EjerciciosClasesJava {
 }

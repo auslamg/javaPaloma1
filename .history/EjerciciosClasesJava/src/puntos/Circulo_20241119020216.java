@@ -1,12 +1,9 @@
 package puntos;
 
-import puntos.Circulo.Color;
-
-public class Circulo {
+class Circulo {
 
 	Coordenadas position;
 	float radius;
-
 
 	enum Color {
 		white,
@@ -21,11 +18,12 @@ public class Circulo {
 	Color borderColor;
 
 	public Circulo() {
-		this(0,0,1, Color.white);
+		this(0,0,1,Color.white);
 	}
 
 	public Circulo(int xCoord, int yCoord, float radiusLength, Color fillColorValue) {
 		this(xCoord,yCoord,radiusLength,fillColorValue,null);
+		this.position.dimensions = 2;
 	}
 
 	public Circulo(int xCoord, int yCoord, float radiusLength, Color fillColorValue, Color borderColorValue) {
