@@ -20,21 +20,11 @@ public class Maths {
             throw new ArithmeticException("Can't run factorial of negative numbers.");
         }
 
-        if (num < 2) {
-            return 1;
+        if (num < 3) {
+            return num;
         }
-        else return num * factorialRecursive(num - 1);
-    }
 
-    public static int fibonacciRecursive(int num) {
-        switch (num) {
-            case 0:
-                return  0;
-            case 1:
-                return 1;
-            default:
-                return fibonacciRecursive(num - 1) + fibonacciRecursive(num - 2);
-        }
+        else return num * factorialRecursive(num - 1);
     }
 
     public static float avgVectors(int[] vector) {
@@ -45,7 +35,7 @@ public class Maths {
 
         return totalSum / vector.length;
     }
-    
+
     public static boolean isPrime(int num) {
         int i = 1;
         while (i < num) {

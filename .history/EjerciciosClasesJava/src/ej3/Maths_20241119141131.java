@@ -27,14 +27,13 @@ public class Maths {
     }
 
     public static int fibonacciRecursive(int num) {
-        switch (num) {
-            case 0:
-                return  0;
-            case 1:
-                return 1;
-            default:
-                return fibonacciRecursive(num - 1) + fibonacciRecursive(num - 2);
+        if (num == 0) {
+            return  0;
         }
+        else if (num == 1) {
+            return 1;
+        }
+        else return fibonacciRecursive(num - 1) + fibonacciRecursive(num - 2);
     }
 
     public static float avgVectors(int[] vector) {

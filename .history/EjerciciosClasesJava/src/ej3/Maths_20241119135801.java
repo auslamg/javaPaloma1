@@ -26,17 +26,6 @@ public class Maths {
         else return num * factorialRecursive(num - 1);
     }
 
-    public static int fibonacciRecursive(int num) {
-        switch (num) {
-            case 0:
-                return  0;
-            case 1:
-                return 1;
-            default:
-                return fibonacciRecursive(num - 1) + fibonacciRecursive(num - 2);
-        }
-    }
-
     public static float avgVectors(int[] vector) {
         int totalSum = 0;
         for (int i : vector) {
