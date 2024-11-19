@@ -26,7 +26,7 @@ public class Maths {
             return num;
         }
 
-        else return num * factorialRecursive(num - 1);
+        else return factorialRecursive(num - 1);
     }
 
     public static float avgVectors(int[] vector) {
