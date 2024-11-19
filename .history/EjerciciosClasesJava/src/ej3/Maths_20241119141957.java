@@ -28,7 +28,7 @@ public class Maths {
 
     public static int fibonacciRecursive(int num) {
         if (num < 0) {
-            throw new ArithmeticException("Can't run fibonacci of negative numbers.");
+            throw new ArithmeticException("Can't run factorial of negative numbers.");
         }
 
         switch (num) {
