@@ -2,15 +2,17 @@ package ej2;
 
 public class Adress {
 
+    public String getFullDirection() {
+        return (roadType.toString() + " " + roadName + " " + roadNumber + ", " + city + ", " + province.toString() + " (" + postCode + ")");
+    }
 
     //Tipo de vía
     enum roadTypes {
-        Lane,
-        Street,
-        District,
-        Road,
-        Boulevard,
-        Avenue
+        lane,
+        street,
+        district,
+        road,
+        boulevard
     }
 
     roadTypes roadType;
@@ -31,10 +33,6 @@ public class Adress {
     provinces province;
 
     String fullDirection;
-    
-    public String getFullDirection() {
-        return (roadName + " " + roadType.toString() + " " + roadNumber + ", " + city + ", " + province.toString() + " (" + postCode + ")");
-    }
 
 
     //Sin opcionales

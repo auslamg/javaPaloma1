@@ -5,12 +5,11 @@ public class Adress {
 
     //Tipo de vía
     enum roadTypes {
-        Lane,
-        Street,
-        District,
-        Road,
-        Boulevard,
-        Avenue
+        lane,
+        street,
+        district,
+        road,
+        boulevard
     }
 
     roadTypes roadType;

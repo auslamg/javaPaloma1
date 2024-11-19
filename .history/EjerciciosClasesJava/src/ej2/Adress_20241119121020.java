@@ -7,10 +7,9 @@ public class Adress {
     enum roadTypes {
         Lane,
         Street,
-        District,
-        Road,
-        Boulevard,
-        Avenue
+        district,
+        road,
+        boulevard
     }
 
     roadTypes roadType;

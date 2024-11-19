@@ -6,10 +6,6 @@ public class Person {
     String name;
     Adress adress;
 
-    public Person(String DNI, String name) {
-        this(DNI, name, null);
-    }
-
     public Person(String DNI, String name, Adress adress) {
         this.DNI = DNI;
         this.name = name;
