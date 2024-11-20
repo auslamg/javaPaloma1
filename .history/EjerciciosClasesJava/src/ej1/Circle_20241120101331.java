@@ -4,9 +4,11 @@ class Circle {
 
 	public static void main(String[] args) {
 		Circle circulo1;
-		circulo1 = new Circle(new Coordinates(), -500, Color.white);
-
-		System.out.println(circulo1.radius);
+		try {
+			circulo1 = new Circle(new Coordinates(), -500, Color.white);
+		} catch (Exception e) {
+			System.err.println("asdjasdj");
+		}
 	}
 
 	Coordinates position;
@@ -35,7 +37,7 @@ class Circle {
 	public Circle(Coordinates centerPosition, float radiusLength, Color fillColorValue, Color borderColorValue) {
 		if (radiusLength <= 0) {
 			try {
-				throw new Exception("Not possible");
+				throw new Exception();
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
 			}

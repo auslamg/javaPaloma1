@@ -35,7 +35,7 @@ class Circle {
 	public Circle(Coordinates centerPosition, float radiusLength, Color fillColorValue, Color borderColorValue) {
 		if (radiusLength <= 0) {
 			try {
-				throw new Exception("Not possible");
+				throw new Exception();
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
 			}

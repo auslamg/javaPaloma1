@@ -6,7 +6,7 @@ class Circle {
 		Circle circulo1;
 		circulo1 = new Circle(new Coordinates(), -500, Color.white);
 
-		System.out.println(circulo1.radius);
+		System.out.println(circulo1.getRadius());
 	}
 
 	Coordinates position;
@@ -35,7 +35,7 @@ class Circle {
 	public Circle(Coordinates centerPosition, float radiusLength, Color fillColorValue, Color borderColorValue) {
 		if (radiusLength <= 0) {
 			try {
-				throw new Exception("Not possible");
+				throw new Exception();
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
 			}

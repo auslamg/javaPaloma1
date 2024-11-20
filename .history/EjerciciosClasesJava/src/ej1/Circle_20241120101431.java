@@ -6,7 +6,7 @@ class Circle {
 		Circle circulo1;
 		circulo1 = new Circle(new Coordinates(), -500, Color.white);
 
-		System.out.println(circulo1.radius);
+		System.out.println(circulo1.getRadius());
 	}
 
 	Coordinates position;

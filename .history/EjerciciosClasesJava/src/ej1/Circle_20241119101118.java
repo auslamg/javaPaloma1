@@ -2,13 +2,6 @@ package ej1;
 
 class Circle {
 
-	public static void main(String[] args) {
-		Circle circulo1;
-		circulo1 = new Circle(new Coordinates(), -500, Color.white);
-
-		System.out.println(circulo1.radius);
-	}
-
 	Coordinates position;
 	float radius;
 
@@ -30,17 +23,10 @@ class Circle {
 
 	public Circle(Coordinates centerPosition, float radiusLength, Color fillColorValue) {
 		this(centerPosition,radiusLength,fillColorValue,null);
+		this.position.dimensions = 2;
 	}
 
 	public Circle(Coordinates centerPosition, float radiusLength, Color fillColorValue, Color borderColorValue) {
-		if (radiusLength <= 0) {
-			try {
-				throw new Exception("Not possible");
-			} catch (Exception e) {
-				System.out.println(e.getMessage());
-			}
-		}
-
 		position = centerPosition;
 		this.radius = radiusLength;
 		this.fillColor = fillColorValue;
