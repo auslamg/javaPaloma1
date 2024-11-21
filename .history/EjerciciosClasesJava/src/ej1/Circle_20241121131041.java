@@ -4,7 +4,7 @@ class Circle {
 
 	public static void main(String[] args) {
 		Circle circulo1;
-		circulo1 = new Circle(new Coordinates(), -500, Color.white);
+		circulo1 = new Circle(new Coordinates(), 500, Color.white);
 
 		System.out.println(circulo1.radius);
 	}
@@ -36,7 +36,7 @@ class Circle {
 		if (radiusLength <= 0) {
 			throw new ArithmeticException("Not possible");
 		}
-		
+
 		position = centerPosition;
 		this.radius = radiusLength;
 		this.fillColor = fillColorValue;

@@ -34,9 +34,14 @@ class Circle {
 
 	public Circle(Coordinates centerPosition, float radiusLength, Color fillColorValue, Color borderColorValue) throws ArithmeticException {
 		if (radiusLength <= 0) {
-			throw new ArithmeticException("Not possible");
+			try {
+				throw new Exception("Not possible");
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
+			return;
 		}
-		
+
 		position = centerPosition;
 		this.radius = radiusLength;
 		this.fillColor = fillColorValue;

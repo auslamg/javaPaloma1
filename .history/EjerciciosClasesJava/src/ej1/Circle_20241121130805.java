@@ -24,19 +24,24 @@ class Circle {
 	Color fillColor = Color.white;
 	Color borderColor;
 
-	public Circle() throws ArithmeticException {
+	public Circle() {
 		this(new Coordinates(), 1, Color.white);
 	}
 
-	public Circle(Coordinates centerPosition, float radiusLength, Color fillColorValue) throws ArithmeticException {
+	public Circle(Coordinates centerPosition, float radiusLength, Color fillColorValue) {
 		this(centerPosition,radiusLength,fillColorValue,null);
 	}
 
-	public Circle(Coordinates centerPosition, float radiusLength, Color fillColorValue, Color borderColorValue) throws ArithmeticException {
+	public Circle(Coordinates centerPosition, float radiusLength, Color fillColorValue, Color borderColorValue) {
 		if (radiusLength <= 0) {
-			throw new ArithmeticException("Not possible");
+			try {
+				throw new Exception("Not possible");
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
+			return;
 		}
-		
+
 		position = centerPosition;
 		this.radius = radiusLength;
 		this.fillColor = fillColorValue;

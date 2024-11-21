@@ -36,7 +36,7 @@ class Circle {
 		if (radiusLength <= 0) {
 			throw new ArithmeticException("Not possible");
 		}
-		
+
 		position = centerPosition;
 		this.radius = radiusLength;
 		this.fillColor = fillColorValue;
