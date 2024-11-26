@@ -5,14 +5,13 @@ public class Bank {
     String code; //5chars
     String name; 
     ArrayList<Sucursal> sucursals;
-    ArrayList<Account> accounts;
 
     public Bank(String _code, String _name, ArrayList<Sucursal> _sucursals) throws IllegalArgumentException {
         if (_code.length() != 5) {
             throw new IllegalArgumentException("Code must have 5 alphanumeric characters!");
         }
         if (_sucursals.size() < 1) {
-            throw new IllegalArgumentException("Bank must have at least one sucursal");
+            throw new IllegalArgumentException("Sucursal must have at least one phone number");
         }
 
         this.code = _code;

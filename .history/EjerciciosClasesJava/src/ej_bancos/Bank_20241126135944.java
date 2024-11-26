@@ -5,7 +5,6 @@ public class Bank {
     String code; //5chars
     String name; 
     ArrayList<Sucursal> sucursals;
-    ArrayList<Account> accounts;
 
     public Bank(String _code, String _name, ArrayList<Sucursal> _sucursals) throws IllegalArgumentException {
         if (_code.length() != 5) {
