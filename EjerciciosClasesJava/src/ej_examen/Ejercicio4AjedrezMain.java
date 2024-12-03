@@ -13,18 +13,22 @@ public class Ejercicio4AjedrezMain {
 		//Obtener movimiento de torre blanca
 		System.out.println(TipoPieza.R.getTipoMovimiento());
 		
-				//Poner reina blanca en 3,3
-				juegoAjedrez.ponerPieza((byte) 3, (byte) 3, new Pieza(TipoPieza.Q, Color.B));
+		//Poner reina blanca en 3,3
+		juegoAjedrez.ponerPieza((byte) 3, (byte) 3, new Pieza(TipoPieza.Q, Color.B));
+
+		//Poner rey blanco en 5,5
+		juegoAjedrez.ponerPieza((byte) 5, (byte) 5, new Pieza(TipoPieza.K, Color.B));
+
+		//Mostrar piezas y su posición
+		juegoAjedrez.mostrarSituacionPiezasTablero();
+	}
 		
-				//Poner rey blanco en 5,5
-				juegoAjedrez.ponerPieza((byte) 5, (byte) 5, new Pieza(TipoPieza.K, Color.B));
+}
 		
-				//Mostrar piezas y su posición
-				juegoAjedrez.mostrarSituacionPiezasTablero();
-			}
-		
-		}
-		
+class Casilla {
+	Pieza pieza = null;
+}
+
 		
 class Pieza {
 	enum TipoPieza {
@@ -64,20 +68,20 @@ class Pieza {
 
 class JuegoAjedrez {
 
-	Pieza[][] piezasEnTablero = new Pieza[8][8];
+	Casilla[][] piezasEnTablero = new Casilla[8][8];
 
 	void ponerPieza(byte fila, byte columna, Pieza pieza){
-		piezasEnTablero[fila - 1][columna - 1] = pieza;
+		piezasEnTablero[fila - 1][columna - 1].pieza = pieza;
 	}
 
     void mostrarSituacionPiezasTablero() {
-		//Leer fila
 		int cantidadPiezasEnTablero = 0;
-
+		
+		//Leer fila
         for (int i = 0; i < piezasEnTablero.length; i++) {
 			//Leer columna
 			for (int j = 0; j < piezasEnTablero[i].length; j++) {
-				Pieza miPieza = piezasEnTablero[i][j];
+				Pieza miPieza = piezasEnTablero[i][j].pieza;
 				//Mostrar pieza si existe
 				if (miPieza != null) {
 					System.out.println( miPieza.tipoPieza.toString() + miPieza.color.toString() + " en posición " + (i + 1) + "," + (j + 1) );					
