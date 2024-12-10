@@ -1,0 +1,43 @@
+# Compiled class files
+*.class
+
+# Logs and temporary files
+*.log
+*.tmp
+*.swp
+*.swo
+
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+
+# Gradle
+.gradle/
+build/
+
+# Eclipse IDE
+.settings/
+.project
+.classpath
+
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# NetBeans IDE
+nbproject/
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+
+# Eclipse .launch files
+*.launch
+
+# Other files you may not want to include
+*.out
+*.bak
+*.orig
