@@ -4,19 +4,24 @@ package ej_polygon;
 abstract class ClosedFigure {
 	protected float area;
 	public abstract float dameArea();
+
+	void Euclidean() {
+		System.err.println("SOY UN POLIGONO");
+	}
 }
 
 @SuppressWarnings("unused")
-class Square {
+class Square extends ClosedFigure{
 	float sideLength;
 
+	@Override
 	public float dameArea() {
 		return sideLength*sideLength;
 	}
 }
 
 @SuppressWarnings("unused")
-class Triangle {
+class Triangle extends ClosedFigure {
 	float base;
 	float height;
 
@@ -25,7 +30,11 @@ class Triangle {
 		this.height = height;
 	}
 
-	public float dameArea() throws Exception {
+	@Override
+	public float dameArea(){
 		return base*height/2;
+	}
+	void Pithagorean() {
+		System.out.println("SOY UN TRIANGULO");
 	}
 }
