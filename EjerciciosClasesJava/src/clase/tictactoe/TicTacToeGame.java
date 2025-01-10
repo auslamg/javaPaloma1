@@ -75,10 +75,10 @@ public final class TicTacToeGame {
 			case "9" -> coords = new int[]{2,2};
 
 			default -> {
-                            System.out.println("Invalid input. Type /help for help");
-							DisplayBoard();
-							return ReadInput(pieceTeam);
-                }
+				System.out.println("Invalid input. Type /help for help");
+				DisplayBoard();
+				return ReadInput(pieceTeam);
+			}
 		}
 		if (isAvailable(coords)) {
 			System.out.println("=======================================================");
