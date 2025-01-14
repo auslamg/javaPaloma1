@@ -1,4 +1,4 @@
-package clase.poker;
+package juegosclase.poker;
 
 import java.util.ArrayList;
 import java.util.Random;
