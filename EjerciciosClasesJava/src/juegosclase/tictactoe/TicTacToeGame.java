@@ -1,4 +1,4 @@
-package clase.tictactoe;
+package juegosclase.tictactoe;
 
 import java.util.ArrayList;
 import java.util.Scanner;
