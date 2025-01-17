@@ -9,37 +9,34 @@ class CalculadoraTest {
 	@Test
 	void testSuma() {
 		Calculadora c = new Calculadora(1,2);
-		
-		if (c.suma() != 3) {
-			fail("Suma no funciona");	
-		}
+		int resultado = c.suma();
+
+		assertEquals(resultado, 3);
 	}
 
 	@Test
 	void testResta() {
 		Calculadora c = new Calculadora(2,1);
-		
-		if (c.resta() != 1) {
-			fail("Resta no funciona");			
-		}
+		int resultado = c.resta();
+
+		assertEquals(resultado, 1);
 	}
 
 	@Test
 	void testProducto() {
 		Calculadora c = new Calculadora(2,3);
+		int resultado = c.producto();
+
+		assertEquals(resultado, 6);
 		
-		if (c.producto() != 6) {
-			fail("Producto no funciona");		
-		}
 	}
 
 	@Test
 	void testDivision() {
 		Calculadora c = new Calculadora(4,2);
-		
-		if (c.division() != 2) {
-			fail("Division no funciona");		
-		}
+		int resultado = c.division();
+
+		assertEquals(resultado, 2);
 	}
 
 }
