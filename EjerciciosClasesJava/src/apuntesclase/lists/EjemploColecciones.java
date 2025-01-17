@@ -89,7 +89,7 @@ public class EjemploColecciones {
 			System.out.println("- Nombre: " + lAlumno.getNombre());
 	    }
 	}
-	
+	 
 	public static void ejemploConHashMap() {
 		System.out.println("=== Ejemplo con HashMap ===");
 		Alumno pepe = new Alumno("1A","Pepe");

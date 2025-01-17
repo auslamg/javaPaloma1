@@ -49,7 +49,7 @@ public class RecorridoListas {
  
         //Iterator
         System.out.println("-Iterator");
-        Iterator iterator = listNom.iterator();
+        Iterator<String> iterator = listNom.iterator();
         while (iterator.hasNext()) {
             System.out.println(iterator.next());
         }
