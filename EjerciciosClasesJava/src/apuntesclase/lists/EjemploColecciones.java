@@ -5,7 +5,7 @@ import java.util.HashSet;
 class Alumno {
 	private String DNI;
 	private String nombre;
-	
+
 	Alumno (String pDNI) {
 		if (pDNI==null || pDNI=="") {
 			throw new IllegalArgumentException("Necesita un DNI");
