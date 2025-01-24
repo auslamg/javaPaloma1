@@ -5,6 +5,37 @@ import java.util.Scanner;
 public class ConsoleReader{
 
 	public static <T> T askT(String question, Class<T> returnType) {
+		return AskGeneric.askT(question, returnType);
+	}
+
+	public static <T> T askEnumMemberByList(String question, Class<T> returnType) {
+		T input = null;
+
+		System.out.println(question);
+
+		if (returnType.getEnumConstants()[0].toString().equals("A")) { 
+			
+		}
+
+		System.out.print("Enum values:");
+		T[] enumConstants = returnType.getEnumConstants();
+		for (int i = 0; i < enumConstants.length; i++) {
+			System.out.print(i + "-" + enumConstants[i] + " ");
+		}
+		Integer choice = AskGeneric.askT("Choose an option", Integer.class);
+		if (choice >= 0 && choice < enumConstants.length) {
+			input = enumConstants[choice];
+		}
+		else {
+			input = askEnumMemberByList("Invalid option. Try again", returnType);
+		}
+		return input;
+	}
+}
+
+class AskGeneric {
+
+	public static <T> T askT(String question, Class<T> returnType) {
 		T input = null;		
 
 		System.out.println(question);
@@ -94,29 +125,5 @@ public class ConsoleReader{
 			scn.close();
 			return askT("Invalid input. Try Boolean value", Boolean.class);
 		}
-	}
-
-	public static <T> T askEnumMemberByList(String question, Class<T> returnType) {
-		T input = null;
-
-		System.out.println(question);
-
-		if (returnType.getEnumConstants()[0].toString().equals("A")) { 
-			
-		}
-
-		System.out.print("Enum values:");
-		T[] enumConstants = returnType.getEnumConstants();
-		for (int i = 0; i < enumConstants.length; i++) {
-			System.out.print(i + ". " + enumConstants[i] + " ");
-		}
-		Integer choice = askT("Choose an option", Integer.class);
-		if (choice >= 0 && choice < enumConstants.length) {
-			input = enumConstants[choice];
-		}
-		else {
-			input = askEnumMemberByList("Invalid option. Try again", returnType);
-		}
-		return input;
 	}
 }
