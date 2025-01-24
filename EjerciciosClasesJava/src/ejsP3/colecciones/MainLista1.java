@@ -27,5 +27,12 @@ public class MainLista1 {
 
 		System.out.println(Lista1.size());
 		Integer[] arrayCast = Lista1.toArray(new Integer[5]);
+
+		Lista1.clear();
+
+		Lista1.add(0, i);
+		Integer myInt = Lista1.get(0);
+		Lista1.remove(0);
+		Lista1.set(0, myInt);
 	}
 }
