@@ -1,4 +1,4 @@
-package consoleReader;
+package gab.utils.console;
 
 import java.util.Scanner;
 
