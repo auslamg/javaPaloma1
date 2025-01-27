@@ -1,15 +1,14 @@
 package juegosclase.haggle;
 
-import consoleReader.ConsoleReader;
 import java.util.ArrayList;
 import java.util.List;
 
 @SuppressWarnings("unused")
 public class HaggleBot {
 	public static void main(String[] args) {
-		Integer name = ConsoleReader.askT("What is your name?", Integer.class);
+		//Integer name = ConsoleReader.askT("What is your name?", Integer.class);
 
-		System.out.println("Hola "	+ name + ", bienvenido a HaggleBot");
+		//System.out.println("Hola "	+ name + ", bienvenido a HaggleBot");
 	}
 }
 

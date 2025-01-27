@@ -4,126 +4,224 @@ import java.util.Scanner;
 
 public class ConsoleReader{
 
-	public static <T> T askT(String question, Class<T> returnType) {
-		return AskGeneric.askT(question, returnType);
+	Scanner scn;
+
+	public ConsoleReader() {
+		scn = new Scanner(System.in);
 	}
 
-	public static <T> T askEnumMemberByList(String question, Class<T> returnType) {
-		T input = null;
 
-		System.out.println(question);
+	public static void main(String[] args) {
+		ConsoleReader cr = new ConsoleReader();
 
-		if (returnType.getEnumConstants()[0].toString().equals("A")) { 
-			
+		/* System.out.println(askT("Enter an integer", Integer.class, scn));
+		System.out.println(askT("Enter a double", Double.class, scn));
+		System.out.println(askT("Enter a string", String.class, scn));
+		System.out.println(askT("Enter a character", Character.class, scn));
+		System.out.println(askT("Enter a boolean", Boolean.class, scn)); */
+
+		enum exampleEnum {
+			AMONGUS,
+			B_TYPE,
+			CHAIR,
+			DENMARK,
+			EPSILON
 		}
 
-		System.out.print("Enum values:");
-		T[] enumConstants = returnType.getEnumConstants();
-		for (int i = 0; i < enumConstants.length; i++) {
-			System.out.print(i + "-" + enumConstants[i] + " ");
-		}
-		Integer choice = AskGeneric.askT("Choose an option", Integer.class);
-		if (choice >= 0 && choice < enumConstants.length) {
-			input = enumConstants[choice];
-		}
-		else {
-			input = askEnumMemberByList("Invalid option. Try again", returnType);
-		}
-		return input;
+		System.out.println(cr.askEnumMemberByListIndex("Choose your enum element", exampleEnum.class, cr.scn));
+		System.out.println(cr.askEnumMemberByName("Choose your enum element", exampleEnum.class, cr.scn)); 
+
+		cr.scn.close();
+
 	}
+
+	public <T> T askT(String question, Class<T> returnType, Scanner scn) {
+		return AskGeneric.askT(question, returnType, scn);
+	}
+
+	public <T> T askEnumMemberByListIndex(String question, Class<T> returnType, Scanner scn) {
+		return AskEnumMember.askEnumMemberByListIndex(question, returnType, scn);
+	}
+
+	public <T> T askEnumMemberByName(String question, Class<T> returnType, Scanner scn) {
+		return AskEnumMember.askEnumMemberByName(question, returnType, scn);
+	}
+
 }
 
 class AskGeneric {
 
-	public static <T> T askT(String question, Class<T> returnType) {
-		T input = null;		
+	public static <T> T askT(String question, Class<T> returnType, Scanner scn) {
+		T output = null;
 
+		//Ask question
 		System.out.println(question);
 		
+		//Assert type
 		switch (returnType.getSimpleName()) {
-			case "Integer" -> input = returnType.cast(readInteger());
-			case "Double" -> input = returnType.cast(readDouble());
-			case "String" -> input = returnType.cast(readString());
-			case "Character" -> input = returnType.cast(readCharacter());
-			case "Boolean" -> input = returnType.cast(readBoolean());
-			default -> System.out.println("Invalid type");
+			case "Integer" -> output = returnType.cast(readInteger(scn));
+			case "Double" -> output = returnType.cast(readDouble(scn));
+			case "String" -> output = returnType.cast(readString(scn));
+			case "Character" -> output = returnType.cast(readCharacter(scn));
+			case "Boolean" -> output = returnType.cast(readBoolean(scn));
+			//If the type is not supported, return null
+			default -> {
+				System.out.println("Invalid type");
+				return null;
+			}
 		}
 		
-		return input;
+		return output;
 	}
 
-	private static Integer readInteger() {
-		Scanner scn = new Scanner(System.in);
-		Integer input = null;
-
-		if (scn.hasNextInt()) {
-			input = scn.nextInt();
-			scn.close();
+	private static Integer readInteger(Scanner scn) {
+		Scanner s = scn;
+		
+		//Read input
+		try {
+			Integer input = s.nextInt();
 			return input;
 		}
-		else {
-			scn.close();
-			return askT("Invalid input. Try Integer value", Integer.class);
-		}
-	}
-
-	private static Double readDouble() {
-		Scanner scn = new Scanner(System.in);
-		Double input = null;
-
-		if (scn.hasNextDouble()) {
-			input = scn.nextDouble();
-			scn.close();
-			return input;
-		}
-		else {
-			scn.close();
-			return askT("Invalid input. Try Double value", Double.class);
+		//Retry
+		catch (Exception e) {
+			scn.nextLine();
+			return askT("Invalid input. Try Integer value", Integer.class, scn);
 		}
 	}
 
-	private static String readString() {
-		Scanner scn = new Scanner(System.in);
-		String input = null;
+	private static Double readDouble(Scanner scn) {
+		Scanner s = scn;
 
-		if (scn.hasNext()) {
-			input = scn.next();
-			scn.close();
+		//Read input
+		try {
+			Double input = s.nextDouble();
 			return input;
-		}
-		else {
-			scn.close();
-			return askT("Invalid input. Try String value", String.class);
+		} 
+		//Retry
+		catch (Exception e) {
+			scn.nextLine();
+			return askT("Invalid input. Try Double value", Double.class, scn);
 		}
 	}
 
-	private static Character readCharacter() {
-		Scanner scn = new Scanner(System.in);
-		Character input = null;
+	private static String readString(Scanner scn) {
+		Scanner s = scn;
 
-		if (scn.hasNext()) {
-			input = scn.next().charAt(0);
-			scn.close();
+		//Read input
+		try {
+			String input = s.next();
 			return input;
-		}
-		else {
-			scn.close();
-			return askT("Invalid input. Try Character value", Character.class);
+		} 
+		//Retry
+		catch (Exception e) {
+			scn.nextLine();
+			return askT("Invalid input. Try String value", String.class, scn);
 		}
 	}
 
-	private static Boolean readBoolean() {
-		Scanner scn = new Scanner(System.in);
-		Boolean input = null;
+	private static Character readCharacter(Scanner scn) {
+		Scanner s = scn;
 
-		if (scn.hasNextBoolean()) {
-			input = scn.nextBoolean();
-			scn.close();
+		//Read input
+		try {
+			Character input = s.next().charAt(0);
 			return input;
+		} 
+		//Retry
+		catch (Exception e) {
+			scn.nextLine();
+			return askT("Invalid input. Try Character value", Character.class, scn);
 		}
+	}
+
+	private static Boolean readBoolean(Scanner scn) {
+		Scanner s = scn;
+
+		//Read input
+		try {
+			Boolean input = s.nextBoolean();
+			return input;
+		} 
+		//Retry
+		catch (Exception e) {
+			scn.nextLine();
+			return askT("Invalid input. Try Boolean value", Boolean.class, scn);
+		}
+	}
+}
+
+class AskEnumMember {
+	
+	static <T> T askEnumMemberByListIndex(String question, Class<T> returnType, Scanner scn) {
+		T output = null;
+		
+		//Ask question
+		System.out.println(question);
+
+		//Check if enum has values
+		if (returnType.getEnumConstants().length == 0) {
+			System.out.println("No enum values");
+			return null;
+		}
+
+		//List all enum values
+		System.out.println("Enum values: ");
+		T[] enumConstants = returnType.getEnumConstants();
+		for (int i = 0; i < enumConstants.length; i++) {
+			System.out.println(i + " - " + enumConstants[i] + " ");
+		}
+
+		//Ask for value index
+		Integer choice = AskGeneric.askT("Choose an option", Integer.class, scn);
+		if (choice >= 0 && choice < enumConstants.length) {
+			output = enumConstants[choice];
+		}
+		//Retry
 		else {
-			scn.close();
-			return askT("Invalid input. Try Boolean value", Boolean.class);
+			output = askEnumMemberByListIndex("Invalid index. Try again", returnType, scn);
 		}
+		
+		return output;
+	}
+
+	static <T> T askEnumMemberByName(String question, Class<T> returnType, Scanner scn) {
+		T output = null;
+
+		System.out.println(question);
+
+		//Check if enum has values
+		if (returnType.getEnumConstants().length == 0) {
+			System.out.println("No enum values");
+			return null;
+		}
+
+		//List all enum values
+		System.out.print("Enum values: ");
+		T[] enumConstants = returnType.getEnumConstants();
+		for (int i = 0; i < enumConstants.length; i++) {
+			System.out.print(enumConstants[i]);
+			if (i != enumConstants.length - 1) {
+				System.out.print(" - ");
+			}
+			else {
+				System.out.println();
+			}
+		}
+
+		//Ask for string value
+		String choice = AskGeneric.askT("Choose an option", String.class, scn);
+		for (T t : enumConstants) {
+			if (t.toString().equals(choice.toUpperCase())) {
+				output = t;
+				break;
+			}
+		}
+
+		//If the input is not valid, ask again
+		if (output == null) {
+			return askEnumMemberByName("Invalid option. Try again", returnType, scn);
+		}
+
+		return output;
 	}
 }
