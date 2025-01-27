@@ -10,7 +10,6 @@ public class ConsoleReader{
 		scn = new Scanner(System.in);
 	}
 
-
 	public static void main(String[] args) {
 		ConsoleReader cr = new ConsoleReader();
 
@@ -28,23 +27,26 @@ public class ConsoleReader{
 			EPSILON
 		}
 
-		System.out.println(cr.askEnumMemberByListIndex("Choose your enum element", exampleEnum.class, cr.scn));
-		System.out.println(cr.askEnumMemberByName("Choose your enum element", exampleEnum.class, cr.scn)); 
+		System.out.println(cr.askEnumMemberByListIndex("Choose your enum element", exampleEnum.class));
+		System.out.println(cr.askEnumMemberByName("Choose your enum element", exampleEnum.class)); 
 
 		cr.scn.close();
 
 	}
 
-	public <T> T askT(String question, Class<T> returnType, Scanner scn) {
-		return AskGeneric.askT(question, returnType, scn);
+	public <T> T askT(String question, Class<T> returnType) {
+		Scanner s = this.scn;
+		return AskGeneric.askT(question, returnType, s);
 	}
 
-	public <T> T askEnumMemberByListIndex(String question, Class<T> returnType, Scanner scn) {
-		return AskEnumMember.askEnumMemberByListIndex(question, returnType, scn);
+	public <T> T askEnumMemberByListIndex(String question, Class<T> returnType) {
+		Scanner s = this.scn;
+		return AskEnumMember.askEnumMemberByListIndex(question, returnType, s);
 	}
 
-	public <T> T askEnumMemberByName(String question, Class<T> returnType, Scanner scn) {
-		return AskEnumMember.askEnumMemberByName(question, returnType, scn);
+	public <T> T askEnumMemberByName(String question, Class<T> returnType) {
+		Scanner s = this.scn;
+		return AskEnumMember.askEnumMemberByName(question, returnType, s);
 	}
 
 }
