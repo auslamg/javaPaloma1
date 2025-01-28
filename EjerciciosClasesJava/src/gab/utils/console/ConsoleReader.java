@@ -13,25 +13,24 @@ public class ConsoleReader{
 	public static void main(String[] args) {
 		ConsoleReader cr = new ConsoleReader();
 
-		/* System.out.println(askT("Enter an integer", Integer.class, scn));
-		System.out.println(askT("Enter a double", Double.class, scn));
-		System.out.println(askT("Enter a string", String.class, scn));
-		System.out.println(askT("Enter a character", Character.class, scn));
-		System.out.println(askT("Enter a boolean", Boolean.class, scn)); */
+		cr.askT("Dame un Entero", Integer.class);
 
-		enum exampleEnum {
-			AMONGUS,
-			B_TYPE,
-			CHAIR,
-			DENMARK,
-			EPSILON
+		enum biomas {
+			PRADO,
+			DESIERTO,
+			MAR,
+			ASD,
+			BOSQUE
 		}
 
-		System.out.println(cr.askEnumMemberByListIndex("Choose your enum element", exampleEnum.class));
-		System.out.println(cr.askEnumMemberByName("Choose your enum element", exampleEnum.class)); 
+		cr.askEnumMemberByName("Dame el bioma que quieres guardar", biomas.class);
 
-		cr.scn.close();
+		System.out.println(cr.askEnumMemberByListIndex("Choose your enum element", biomas.class));
+		System.out.println(cr.askEnumMemberByName("Choose your enum element", biomas.class)); 
 
+		cr = new ConsoleReader();
+
+		System.out.println(cr.askEnumMemberByListIndex("Choose your enum element", biomas.class));
 	}
 
 	public <T> T askT(String question, Class<T> returnType) {
@@ -54,7 +53,7 @@ public class ConsoleReader{
 class AskGeneric {
 
 	public static <T> T askT(String question, Class<T> returnType, Scanner scn) {
-		T output = null;
+		T output;
 
 		//Ask question
 		System.out.println(question);
@@ -155,7 +154,7 @@ class AskGeneric {
 class AskEnumMember {
 	
 	static <T> T askEnumMemberByListIndex(String question, Class<T> returnType, Scanner scn) {
-		T output = null;
+		T output;
 		
 		//Ask question
 		System.out.println(question);
