@@ -1,10 +1,7 @@
 package errores;
 
 import static org.junit.jupiter.api.Assertions.*;
-
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 class CalculadoraTest {
 
@@ -41,6 +38,13 @@ class CalculadoraTest {
 		int resultado = c.division();
 
 		assertEquals(resultado, 5);
+	}
+	
+	@Test
+	void raiz() {
+	Calculadora calculadora = new Calculadora(8,3);
+	int resultado = calculadora.division();
+	assertEquals(resultado, 2);
 	}
 	
 	@AfterAll

@@ -30,4 +30,18 @@ public class Calculadora {
         int resul = num1 / num2;
         return resul;
     }
+    
+	public int potencia() {
+		int resul = (int) Math.pow(num1, num2);
+		return resul;
+	}
+
+	public int raiz() {
+		if (num2 >= 2) {
+			int resul = (int) Math.pow(num1, (double) 1 / num2);
+			return resul;
+		} else {
+			return 0;
+		}
+	}
 }
