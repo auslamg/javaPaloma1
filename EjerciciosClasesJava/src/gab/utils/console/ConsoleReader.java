@@ -15,7 +15,7 @@ public class ConsoleReader{
 
 		cr.askT("Dame un Entero", Integer.class);
 
-		enum biomas {
+		enum enumEjemplo {
 			PRADO,
 			DESIERTO,
 			MAR,
@@ -23,14 +23,16 @@ public class ConsoleReader{
 			BOSQUE
 		}
 
-		cr.askEnumMemberByName("Dame el bioma que quieres guardar", biomas.class);
+		System.out.println(enumEjemplo.values()[3]);
 
-		System.out.println(cr.askEnumMemberByListIndex("Choose your enum element", biomas.class));
-		System.out.println(cr.askEnumMemberByName("Choose your enum element", biomas.class)); 
+		cr.askEnumMemberByName("Dame el bioma que quieres guardar", enumEjemplo.class);
+
+		System.out.println(cr.askEnumMemberByListIndex("Choose your enum element", enumEjemplo.class));
+		System.out.println(cr.askEnumMemberByName("Choose your enum element", enumEjemplo.class)); 
 
 		cr = new ConsoleReader();
 
-		System.out.println(cr.askEnumMemberByListIndex("Choose your enum element", biomas.class));
+		System.out.println(cr.askEnumMemberByListIndex("Choose your enum element", enumEjemplo.class));
 	}
 
 	public <T> T askT(String question, Class<T> returnType) {
