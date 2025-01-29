@@ -19,11 +19,11 @@ public class ConsoleReader{
 			PRADO,
 			DESIERTO,
 			MAR,
-			ASD,
+			MONTE,
 			BOSQUE
 		}
 
-		System.out.println(enumEjemplo.values()[3]);
+		System.out.println(enumEjemplo.values()[3]); //MONTE
 
 		cr.askEnumMemberByName("Dame el bioma que quieres guardar", enumEjemplo.class);
 
