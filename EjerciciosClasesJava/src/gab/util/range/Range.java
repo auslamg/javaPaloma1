@@ -1,6 +1,17 @@
 package gab.util.range;
 
+import java.util.Random;
+
+
 public class Range <T extends Number> {
+
+	public static void main(String[] args) {
+		Range<Double> myRange = new Range<>(5d, 6d);
+		
+		for (int i = 000; i < 1000; i++) {
+			System.out.println(myRange.RandomNumber());
+		}
+	}
 
 	T min;
 	T max;
@@ -9,8 +20,7 @@ public class Range <T extends Number> {
 	boolean maxInclusive;
 
 	public Range(T min, T max) {
-		this.min = min;
-		this.max = max;
+		this(min, max, true, true);
 	}
 
 	public Range(T min, T max, boolean minInclusive, boolean maxInclusive) {
@@ -32,11 +42,37 @@ public class Range <T extends Number> {
 		return isAboveMin && isBelowMax;
 	}
 
-	public T RandomNumber() {
+	public Number RandomNumber() {
 		return RandomNumber(false, 0);
 	}
 
-	public T RandomNumber(boolean roundToX, int x) {
+	public Number RandomNumber(boolean roundToX, int x) {
+
+		Random r = new Random();
+
+		if (min instanceof Integer) {
+			Integer result = r.nextInt(min.intValue(), max.intValue()+1);
+			return result;		
+		}
+		else if (min instanceof Long) {
+			Long result = r.nextLong(min.longValue(), max.longValue()+1);
+			return result;
+		}
+		else if (min instanceof Float) {
+			Float result = min.floatValue() + (max.floatValue() - min.floatValue()) * r.nextFloat();
+			return result;
+		}
+		else if (min instanceof Double) {
+			Double result = min.doubleValue() + (max.doubleValue() - min.doubleValue()) * r.nextDouble();
+			return result;
+		}
+		else {
+			System.out.println("Unsupported data type");
+			return null;		
+		}		
+	}
+
+	public static Number RandomNumber(Range<Number> range) {
 		return null;
 	}
 }
