@@ -1,6 +1,6 @@
 package juegosclase.haggle;
 
-import gab.utils.console.ConsoleReader;
+import gab.util.console.ConsoleReader;
 import java.util.Random;
 
 @SuppressWarnings("unused")
@@ -24,7 +24,7 @@ public class HaggleBot {
 			//Mayor que el minimo
 			if (currentValue > minValue) {
 				ConsoleReader c = new ConsoleReader();
-				myAction = c.askEnumMemberByListIndex("What action do you want to make?", ActorActions.class); 
+				myAction = c.askEnumConstByIndex("What action do you want to make?", ActorActions.class); 
 			}
 			//Ultima oferta
 			else {
@@ -32,7 +32,7 @@ public class HaggleBot {
 				isTrading = false; //Terminar
 
 				ActorActions2 myLastAction = null;
-				myLastAction = new ConsoleReader().askEnumMemberByListIndex("What action do you want to make?", ActorActions2.class); 
+				myLastAction = new ConsoleReader().askEnumConstByIndex("What action do you want to make?", ActorActions2.class); 
 
 				//Ultima acción
 				switch (myLastAction) {

@@ -1,6 +1,5 @@
 package gab.util.console;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -34,9 +33,6 @@ public class ConsoleReader{
 		cr = new ConsoleReader();
 
 		System.out.println(cr.askEnumConstByIndex("Choose your enum element", enumEjemplo.class));
-
-		//Test Lists
-		List<Character> l = new ArrayList<>();
 	}
 
 	public <T> T askT(String question, Class<T> returnType) {
