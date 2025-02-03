@@ -1,5 +1,7 @@
-package gab.utils.console;
+package gab.util.console;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class ConsoleReader{
@@ -23,16 +25,18 @@ public class ConsoleReader{
 			BOSQUE
 		}
 
-		System.out.println(enumEjemplo.values()[3]); //MONTE
+		//Test Enums
+		cr.askEnumConstByName("Dame el bioma que quieres guardar", enumEjemplo.class);
 
-		cr.askEnumMemberByName("Dame el bioma que quieres guardar", enumEjemplo.class);
-
-		System.out.println(cr.askEnumMemberByListIndex("Choose your enum element", enumEjemplo.class));
-		System.out.println(cr.askEnumMemberByName("Choose your enum element", enumEjemplo.class)); 
+		System.out.println(cr.askEnumConstByIndex("Choose your enum element", enumEjemplo.class));
+		System.out.println(cr.askEnumConstByName("Choose your enum element", enumEjemplo.class)); 
 
 		cr = new ConsoleReader();
 
-		System.out.println(cr.askEnumMemberByListIndex("Choose your enum element", enumEjemplo.class));
+		System.out.println(cr.askEnumConstByIndex("Choose your enum element", enumEjemplo.class));
+
+		//Test Lists
+		List<Character> l = new ArrayList<>();
 	}
 
 	public <T> T askT(String question, Class<T> returnType) {
@@ -40,15 +44,21 @@ public class ConsoleReader{
 		return AskGeneric.askT(question, returnType, s);
 	}
 
-	public <T> T askEnumMemberByListIndex(String question, Class<T> returnType) {
+	public <T> T askEnumConstByIndex(String question, Class<T> returnType) {
 		Scanner s = this.scn;
-		return AskEnumMember.askEnumMemberByListIndex(question, returnType, s);
+		return AskEnumConst.askEnumConstByIndex(question, returnType, s);
 	}
 
-	public <T> T askEnumMemberByName(String question, Class<T> returnType) {
+	public <T> T askEnumConstByName(String question, Class<T> returnType) {
 		Scanner s = this.scn;
-		return AskEnumMember.askEnumMemberByName(question, returnType, s);
+		return AskEnumConst.askEnumConstByName(question, returnType, s);
 	}
+
+	public <T> Object askListElementByIndex(String question, List<T> list) {
+		Scanner s = this.scn;
+
+		return AskListElement.askListElementByIndex(question, list, s);
+	}	
 
 }
 
@@ -153,9 +163,9 @@ class AskGeneric {
 	}
 }
 
-class AskEnumMember {
+class AskEnumConst {
 	
-	static <T> T askEnumMemberByListIndex(String question, Class<T> returnType, Scanner scn) {
+	static <T> T askEnumConstByIndex(String question, Class<T> returnType, Scanner scn) {
 		T output;
 		
 		//Ask question
@@ -181,13 +191,13 @@ class AskEnumMember {
 		}
 		//Retry
 		else {
-			output = askEnumMemberByListIndex("Invalid index. Try again", returnType, scn);
+			output = askEnumConstByIndex("Invalid index. Try again", returnType, scn);
 		}
 		
 		return output;
 	}
 
-	static <T> T askEnumMemberByName(String question, Class<T> returnType, Scanner scn) {
+	static <T> T askEnumConstByName(String question, Class<T> returnType, Scanner scn) {
 		T output = null;
 
 		System.out.println(question);
@@ -222,9 +232,43 @@ class AskEnumMember {
 
 		//If the input is not valid, ask again
 		if (output == null) {
-			return askEnumMemberByName("Invalid option. Try again", returnType, scn);
+			return askEnumConstByName("Invalid option. Try again", returnType, scn);
 		}
 
+		return output;
+	}
+}
+
+class AskListElement {
+
+	static <T> T askListElementByIndex(String question, List<T> list, Scanner scn) {
+		T output;
+		
+		//Ask question
+		System.out.println(question);
+
+		//Check if enum has values
+		if (list.isEmpty()) {
+			System.out.println("No list values");
+			return null;
+		}
+
+		//List all enum values
+		System.out.println("List values: ");
+		for (T t : list) {
+			System.out.println(t + " - " + list.indexOf(t) + " ");
+		}
+
+		//Ask for value index
+		Integer choice = AskGeneric.askT("Choose an option", Integer.class, scn);
+		if (choice >= 0 && choice < list.size()) {
+			output = list.get(choice);
+		}
+		//Retry
+		else {
+			output = askListElementByIndex("Invalid index. Try again", list, scn);
+		}
+		
 		return output;
 	}
 }
