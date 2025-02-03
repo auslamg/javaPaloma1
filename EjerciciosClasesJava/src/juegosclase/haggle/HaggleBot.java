@@ -1,6 +1,8 @@
 package juegosclase.haggle;
 
 import gab.util.console.ConsoleReader;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 @SuppressWarnings("unused")
@@ -18,9 +20,55 @@ public class HaggleBot {
 
 		ActorActions myAction = null;
 
+		enum SellerType {
+			Modest(0,0,0),
+			Trader(0,0,0),
+			Hustler(0,0,0);
+
+			int attempts;
+			int morale;
+			int startOfferMultiplier;
+
+                private SellerType(int attempts, int morale, int startOfferMultiplier) {
+					this.attempts = attempts;
+					this.morale = morale;
+					this.startOfferMultiplier = startOfferMultiplier;
+                }
+            }
+
+		/* 
+			 * SELLER
+			 * 
+			 * int attempts = [2-3] | [2-4] | [2-5]
+			 * int morale = [80-90] | [65-80] | [50-70]
+			 * int startOfferMultiplier = [1.1 - 1.3] | [1.3 - 1.7] | [1.7 - 2.5]
+			 * 
+			 * 
+			 * 
+			 */
+
+			//Valor mayor que minimo
+				//Preguntar acción
+
+					//COMPRA
+						//Terminar
+						//Buyer.cash -= importe
+
+					//REBAJA (Precio)
+						//minPercentReduction = (currentValue/ - 100)/2
+						//maxPercentReduction = 100 - Morale 
+
+						//Increase = Random[20 - maxPercentReduction]
+						//Valor -= Round5(Random)% * (maxValue - minValue)
+
+						//M += Increase/2
+
+					//LEAVE
+						//Terminar
+
 		while (isTrading) { 
 			System.out.println("Current value is: " + currentValue);
-
+			
 			//Mayor que el minimo
 			if (currentValue > minValue) {
 				ConsoleReader c = new ConsoleReader();
@@ -79,7 +127,7 @@ enum ActorActions2 {
 }
 
 
-/* 
+
 class Offer {
 	Actor actor;
 	int priceOffer;
@@ -112,6 +160,40 @@ class Actor {
         this.cash = cash;
         this.ownedArticles = new ArrayList<>();
     }
+
+	void Leave() {
+
+	}
+}
+
+class Buyer extends Actor {
+
+	public Buyer(String name, int cash) {
+		super(name, cash);
+	}
+
+	void Buy() {
+
+	}
+
+	void Bargain() {
+		
+	}
+}
+
+class Seller extends Actor {
+
+	public Seller(String name, int cash) {
+		super(name, cash);
+	}
+
+	void Yield() {
+
+	}
+
+	void Stand() {
+		
+	}
 }
 
 class Article {
@@ -121,4 +203,4 @@ class Article {
 		this.name = name;
 		this.baseValue = baseValue;
 	}
-} */
+}
