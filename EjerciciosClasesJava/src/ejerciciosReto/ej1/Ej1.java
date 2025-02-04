@@ -29,7 +29,7 @@ public class Ej1 {
 
 			Instruccion reunionActual = null;
 			if (input.replaceAll(" ", "").length() == 3) {
-				int numVal = Integer.valueOf(input);
+				int numVal = Integer.parseInt(input);
 
 				int p = numVal%100;
 				int l = numVal%10;
