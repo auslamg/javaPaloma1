@@ -2,7 +2,6 @@ package gab.util.range;
 
 import java.util.Random;
 
-
 public class Range <T extends Number> {
 
 	public static void main(String[] args) {

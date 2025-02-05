@@ -1,9 +1,10 @@
 package juegosclase.haggle;
 
-import gab.util.console.ConsoleReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
+import gab.util.console.ConsoleReader;
 
 @SuppressWarnings("unused")
 public class HaggleBot {
@@ -21,20 +22,31 @@ public class HaggleBot {
 		ActorActions myAction = null;
 
 		enum SellerType {
-			Modest(0,0,0),
-			Trader(0,0,0),
-			Hustler(0,0,0);
+			Modest(1,3, 0,0, 0,0),
+			Trader(2,4, 0,0, 0,0),
+			Hustler(2,5, 0,0, 0,0);
 
-			int attempts;
-			int morale;
-			int startOfferMultiplier;
+			private int minAttempts;
+			private  int maxAttempts;
 
-                private SellerType(int attempts, int morale, int startOfferMultiplier) {
-					this.attempts = attempts;
-					this.morale = morale;
-					this.startOfferMultiplier = startOfferMultiplier;
-                }
-            }
+			private int minMorale;
+			private int maxMorale;
+
+			private int minStartOfferMultiplier;
+			private int maxStartOfferMultiplier;
+
+				
+				SellerType(int minAttempts, int maxAttempts, int minMorale, int maxMorale, int minStartOfferMultiplier, int maxStartOfferMultiplier) {
+					this.minAttempts = minAttempts;
+					this.maxAttempts = maxAttempts;
+
+					this.minMorale = minMorale;
+					this.maxMorale = maxMorale;
+
+					this.minStartOfferMultiplier = minStartOfferMultiplier;
+					this.maxStartOfferMultiplier = maxStartOfferMultiplier;
+				}
+			}
 
 		/* 
 			 * SELLER
