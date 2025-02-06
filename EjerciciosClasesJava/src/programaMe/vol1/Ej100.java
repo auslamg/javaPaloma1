@@ -2,8 +2,7 @@ package programaMe.vol1;
 
 import java.util.Arrays;
 import java.util.Scanner;
-
-//DONE
+//FIX: TIMEOUT
 public class Ej100 {
 
 	final static int K = 6174;
@@ -12,16 +11,23 @@ public class Ej100 {
 		Scanner scn = new Scanner(System.in);
 		
 		int numCount = scn.nextInt();
+		scn.nextLine();
 
 		for (int i = 0; i < numCount; i++) {
-			System.out.write( stepsToK(scn.nextInt()));
+			int testNum = scn.nextInt();
+			System.out.println( stepsToK(testNum));
+			scn.nextLine();
 		}
 		scn.close();
 	}
 
 	static int[] toAscendingArray(int v) {
 		int digitNumber = String.valueOf(v).length();
-		
+		while (digitNumber < 4) {
+			v*=10;
+			digitNumber = String.valueOf(v).length();
+		}
+
 		int[] individualNumbers = new int[digitNumber];
 		
 		int currentPower = (int) Math.pow(10, digitNumber - 1);
@@ -60,19 +66,18 @@ public class Ej100 {
 	static int stepsToK(int n) {
 		int counter = 0;
 
-		if (n == K) {
-			return 0;			
-		}
 		while (n != K) { 
 			int n1 = arrayToNum( flipArray(toAscendingArray(n)) );
 			int n2 = arrayToNum( toAscendingArray(n) );
 			
 			n = n1 - n2;
+			if (n == 0) {
+				return 8;
+			}
 			counter++;
 		}
-
 		
-		return counter+1;
+		return counter;
 	}
 
 }
