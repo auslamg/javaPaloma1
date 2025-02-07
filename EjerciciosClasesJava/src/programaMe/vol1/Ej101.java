@@ -7,4 +7,8 @@ public class Ej101 {
 		System.out.println(0);
 	}
 
+	static void a() {
+		
+	}
+
 }
