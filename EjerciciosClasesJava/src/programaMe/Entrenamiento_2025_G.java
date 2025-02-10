@@ -66,6 +66,7 @@ public class Entrenamiento_2025_G {
 		for (int i = 0; i < f; i++) {
 			for (int j = 0; j < c; j++) {
 				map[i][j] = ctx.charAt(counter);
+				
 				System.out.print(ctx.charAt(counter));
 				counter++;
 			}
