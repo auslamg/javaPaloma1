@@ -1,5 +1,6 @@
 package programaMe.vol3;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Ej303 {
@@ -25,6 +26,14 @@ public class Ej303 {
         
 
         //TODO
+    }
+
+    static ArrayList<Integer> InsertLeft(ArrayList<Integer> list, Integer index) {
+        ArrayList<Integer> newList = new ArrayList<>(list);
+        for (int i = list.indexOf(index); i < list.size(); i++) {
+            newList.set(i+1, list.get(i));
+        }
+        return list;
     }
 }
 

@@ -2,7 +2,7 @@ package programaMe.vol3;
 
 import java.util.Scanner;
 
-//DONE
+//DONE: 1.4s exTime, 2 submits
 public class Ej300 {
 	
     public static void main(String[] args) {
@@ -16,6 +16,12 @@ public class Ej300 {
 
 			System.out.println(salida);            
         }
+
+		while (scn.hasNext()) { 
+			//BUCLE WHILE: Siempre devuelve true
+		}
+
+		scn.close();
     }
 
 	
