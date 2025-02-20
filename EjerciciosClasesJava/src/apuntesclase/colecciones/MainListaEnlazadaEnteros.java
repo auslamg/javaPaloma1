@@ -82,7 +82,7 @@ class LinkList {
 			try {
 				currentNode = currentNode.next;
 			} catch (NullPointerException e) {
-				
+
 			}
 		}
 
