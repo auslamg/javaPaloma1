@@ -1,218 +1,57 @@
 package juegosclase.haggle;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
-import gab.util.console.ConsoleReader;
 
-@SuppressWarnings("unused")
+/**
+ * INPUT:
+ * int price [50 - 1000]
+ * 
+ * int attempts [2 - 5]
+ * int minMultiplier [1.05 - 1.2]
+ * int maxMultiplier [1.3 - 1.8]
+ * 
+ * minusN(int n)
+ * if:
+ * 	price - n > price * minMultiplier
+ * 	&&
+ * 	(100-(n/price))%
+ * >true
+ * 	price -= n
+ * >false 
+ * 	minMultiplier++
+ * attempts--
+ * 
+ * 
+ * 
+ * */
 public class HaggleBot {
-	
-	public static void main(String[] args) {
-		
-		boolean isTrading = true;
 
-		float baseValue = 100;
-		float maxValue = baseValue * 1.5f; //Initial value
-		float minValue = baseValue *1.1f; //Minimum sell value to take
+    int price = 100;
 
-		float currentValue = maxValue;
+    int attempts;
+    float minMultiplier;
+    float maxMultiplier;
 
-		ActorActions myAction = null;
+    public HaggleBot() {
+		Random r = new Random();
 
-		enum SellerType {
-			Modest(1,3, 0,0, 0,0),
-			Trader(2,4, 0,0, 0,0),
-			Hustler(2,5, 0,0, 0,0);
+		attempts = 2 + (int)(Math.random() * ((5 - 2) + 1));
 
-			private int minAttempts;
-			private  int maxAttempts;
+		attempts = r.nextInt(5);
+		minMultiplier = r.nextFloat(1.2f);
+		maxMultiplier = r.nextFloat(1.8f);
 
-			private int minMorale;
-			private int maxMorale;
-
-			private int minStartOfferMultiplier;
-			private int maxStartOfferMultiplier;
-
-				
-				SellerType(int minAttempts, int maxAttempts, int minMorale, int maxMorale, int minStartOfferMultiplier, int maxStartOfferMultiplier) {
-					this.minAttempts = minAttempts;
-					this.maxAttempts = maxAttempts;
-
-					this.minMorale = minMorale;
-					this.maxMorale = maxMorale;
-
-					this.minStartOfferMultiplier = minStartOfferMultiplier;
-					this.maxStartOfferMultiplier = maxStartOfferMultiplier;
-				}
-			}
-
-		/* 
-			 * SELLER
-			 * 
-			 * int attempts = [2-3] | [2-4] | [2-5]
-			 * int morale = [80-90] | [65-80] | [50-70]
-			 * int startOfferMultiplier = [1.1 - 1.3] | [1.3 - 1.7] | [1.7 - 2.5]
-			 * 
-			 * 
-			 * 
-			 */
-
-			//Valor mayor que minimo
-				//Preguntar acción
-
-					//COMPRA
-						//Terminar
-						//Buyer.cash -= importe
-
-					//REBAJA (Precio)
-						//minPercentReduction = (currentValue/ - 100)/2
-						//maxPercentReduction = 100 - Morale 
-
-						//Increase = Random[20 - maxPercentReduction]
-						//Valor -= Round5(Random)% * (maxValue - minValue)
-
-						//M += Increase/2
-
-					//LEAVE
-						//Terminar
-
-		while (isTrading) { 
-			System.out.println("Current value is: " + currentValue);
-			
-			//Mayor que el minimo
-			if (currentValue > minValue) {
-				ConsoleReader c = new ConsoleReader();
-				myAction = c.askEnumConstByIndex("What action do you want to make?", ActorActions.class); 
-			}
-			//Ultima oferta
-			else {
-				System.out.println("Price went below minPrice, finishing trading");
-				isTrading = false; //Terminar
-
-				ActorActions2 myLastAction = null;
-				myLastAction = new ConsoleReader().askEnumConstByIndex("What action do you want to make?", ActorActions2.class); 
-
-				//Ultima acción
-				switch (myLastAction) {
-					case BUY:
-						isTrading = false;
-						break;
-					default:
-						isTrading = false;
-				}
-
-				return;
-			}
-
-			//Acción
-			switch (myAction) {
-				case BUY -> {
-					isTrading = false; //Terminar
-				}
-				case Lower_price -> {
-					Random r = new Random();
-					float randomNum = r.nextFloat(minValue,currentValue);
-					float roundedNumber = 5*Math.round(randomNum/5);
-					currentValue = roundedNumber;
-				}
-				default -> throw new AssertionError();
-			}
-
-			System.out.println("Current value is now: " + currentValue);
-			if (!isTrading) {
-				System.out.println("Trading has finished");
-			}
-		}
-	}
-}
-
-enum ActorActions {
-	BUY,
-	Lower_price
-}
-
-enum ActorActions2 {
-	BUY,
-	LEAVE
-}
-
-
-
-class Offer {
-	Actor actor;
-	int priceOffer;
-	List<Article> articles;
-
-	public Offer(Actor actor, int offer) {
-		this.actor = actor;
-		this.priceOffer = offer;
-		this.articles = new ArrayList<>();
-	}
-
-	public Offer(Actor actor, int offer, List<Article> articles) {
-		this.actor = actor;
-		this.priceOffer = offer;
-		this.articles = articles;
-	}
-
-	public static void main(String[] args) {
-		
-	}
-}
-
-class Actor {
-	String name;
-	int cash;
-	List<Article> ownedArticles;
-
-	public Actor(String name, int cash) {
-        this.name = name;
-        this.cash = cash;
-        this.ownedArticles = new ArrayList<>();
     }
 
-	void Leave() {
+	
 
-	}
-}
 
-class Buyer extends Actor {
+    public static void main(String[] args) {
 
-	public Buyer(String name, int cash) {
-		super(name, cash);
-	}
+    }
 
-	void Buy() {
+	static void DiscountMinus() {
 
-	}
-
-	void Bargain() {
-		
-	}
-}
-
-class Seller extends Actor {
-
-	public Seller(String name, int cash) {
-		super(name, cash);
-	}
-
-	void Yield() {
-
-	}
-
-	void Stand() {
-		
-	}
-}
-
-class Article {
-	String name;
-	int baseValue;
-	public Article(String name, int baseValue) {
-		this.name = name;
-		this.baseValue = baseValue;
 	}
 }
