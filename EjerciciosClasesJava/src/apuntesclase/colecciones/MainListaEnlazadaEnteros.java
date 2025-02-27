@@ -63,6 +63,7 @@ class LinkList<E extends Object> implements List<E> {
         Node<E> currentNode = first;
         boolean foundNode = false;
 
+        //Search all nodes starting from first
         while (!foundNode) {
             //No nodes left
             if (currentNode == null) {
@@ -75,7 +76,7 @@ class LinkList<E extends Object> implements List<E> {
             //Check next
             currentNode = currentNode.next;
         }
-
+        //To avoid compiler error
         return null;
     }
 
@@ -180,16 +181,17 @@ class LinkList<E extends Object> implements List<E> {
     }
 
 	public void addNodeFirst(Node<E> newNode) {
-
 		//Si no hay primero
 		if (first == null) {
 			first = newNode;
 			last = newNode;
 		}
+        //Si hay primero
 		else {
+            //Set new node as previous of old
 			first.previous = newNode;
 			newNode.next = first;
-
+            //Set first as new node
 			first = newNode;
 		}
 		size++;
@@ -206,29 +208,54 @@ class LinkList<E extends Object> implements List<E> {
 			first = newNode;
 			last = newNode;
 		}
-		else {
-			last.next = newNode;
+        //Si hay 
+        else {
+            //Set nodes for new node
 			newNode.previous = last;
-
+            //Set nodes for old nodes
+			last.next = newNode;
+            //Set last as new node
 			last = newNode;
 		}
 		size++;
     }
 
     public void removeNode(Node<E> n) {
-		Node<E> replacer = n.next;
+        Node<E> replacer = n.next;
 
-		if (n.previous != null) {
-			n.previous.next = replacer;
-		}
-		if (replacer != null) {
-			replacer.previous = n.previous;			
-		}
-		if (n == first) {
-			first = replacer;
-		}
+        //Set nodes for old nodes
+        if (n.previous != null) {
+            n.previous.next = replacer;
+        }
+        if (replacer != null) {
+            replacer.previous = n.previous;
+        }
 
-		size--;
+        //Set first if removing first
+        if (n == first) {
+            first = replacer;
+        }
+        //Decrease list size
+        size--;
+    }
+
+    public void insertNodeAt(Node<E> newNode, int index) throws IndexOutOfBoundsException {
+        //If last index
+        if (index == size) {
+            addNodeLast(newNode);
+            return;
+        }
+
+        Node<E> oldNode = getNodeByIndex(index);
+
+        //Set nodes for new node
+        newNode.previous = oldNode.previous;
+        newNode.next = oldNode;
+        //Set new node as next and previous
+        newNode.previous.next = newNode;
+        oldNode.previous = newNode;
+        //Increase list size
+        size++;
     }
 
     @Override
