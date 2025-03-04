@@ -8,15 +8,14 @@ public class Conversion {
 
 	public static void main(String[] args) {
 
-		
 	}
 
-	//Conversion
+	// Conversion
 	public static void ArrayToList() {
-		String[] arrayNom = {"Juan","Pepe"};
+		String[] arrayNom = { "Juan", "Pepe" };
 
 		List<String> listNom = new ArrayList<>();
-		listNom = Arrays.asList (arrayNom);
+		listNom = Arrays.asList(arrayNom);
 	}
 
 	public static void ListToArray() {
