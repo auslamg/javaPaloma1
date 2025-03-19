@@ -21,12 +21,12 @@ public class ListarDirs {
 
         Path currentDir = Paths.get("").toAbsolutePath();
 
-        final File thisFile = new File("EjerciciosClasesJava\\src\\apuntesclase\\ficheros\\ListarDirs.java");
+        final File thisFile = new File(currentDir.toString());
         final File parentFolder = thisFile.getParentFile();
 
         System.out.println("Fichero: " + parentFolder.getName());
 
-        for (String f : parentFolder.getParentFile().list()) {
+        for (String f : parentFolder.list()) {
             System.out.println(f);
         }
 
