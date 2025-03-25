@@ -20,8 +20,8 @@ import java.io.PrintWriter;
  */
 public class ReaderAndWriter {
 
-	static String inputPath = "resources\\input.txt";
-	static String outputPath = "resources\\output.txt";
+	static String inputPath = "resources\\readerAndWriter\\input.txt";
+	static String outputPath = "resources\\readerAndWriter\\output.txt";
 
 	public static void main(String[] args) throws IOException {
 		manualClosed();
@@ -62,7 +62,7 @@ public class ReaderAndWriter {
 	 * Resources are declared and initialized inside of try statement, so they close
 	 * automatically when the try finishes
 	 */
-	static void autoClosed() {
+	static private void autoClosed() {
 		try (BufferedReader inputStream = new BufferedReader(new FileReader(inputPath));
 				PrintWriter outputStream = new PrintWriter(new FileWriter(new File(outputPath)))) {
 
@@ -81,3 +81,13 @@ public class ReaderAndWriter {
 	}
 
 }
+
+enum MyEnum {
+	a,
+	b,
+	c;
+
+    private MyEnum() {
+    }
+	
+};
