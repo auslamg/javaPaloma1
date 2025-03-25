@@ -1,0 +1,12 @@
+texto contiene regex?
+repeticiones de regex?
+contar las líneas?
+
+Simular BD
+crear registros
+consultar
+actualizar
+borrar
+
+Codigo | descr | precio
+n	n	n
