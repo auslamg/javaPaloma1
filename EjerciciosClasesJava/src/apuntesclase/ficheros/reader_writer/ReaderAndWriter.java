@@ -14,6 +14,22 @@ import java.io.PrintWriter;
 ///Tarea
 /// Leer por consola hasta que no quede entrada
 /// Por cada ejecucion, añadir contenido al archivo
+/// 
+///Tarea
+/// ¿Texto contiene regex?
+/// ¿Repeticiones de regex?
+/// ¿Contar las líneas?
+///Simular BD
+///  crear registros 
+///  consultar
+///  actualizar
+///  borrar
+/// 
+/// Codigo|descr|precio 
+/// n 		n 		n
+/// 
+///Tarea
+/// Eliminar una linea del archivo
 
 /**
  * Reads a file from the inputed path and makes a new file copying the text
@@ -55,6 +71,7 @@ public class ReaderAndWriter {
 			if (outputStream != null) {
 				outputStream.close();
 			}
+			final int e = 0;
 		}
 	}
 

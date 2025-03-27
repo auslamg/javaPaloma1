@@ -9,4 +9,4 @@ actualizar
 borrar
 
 Codigo | descr | precio
-n	n	n
+n   	n	    n
