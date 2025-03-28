@@ -71,7 +71,6 @@ public class ReaderAndWriter {
 			if (outputStream != null) {
 				outputStream.close();
 			}
-			final int e = 0;
 		}
 	}
 
