@@ -8,7 +8,10 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.nio.file.Files;
-
+//DONE
+/**
+ * Program adds text to the output file with each execution
+  */
 public class ConsoleWriter {
 
 	static String path = "resources\\consoleWriter\\output.txt";	
@@ -17,6 +20,7 @@ public class ConsoleWriter {
 		BufferedReader input = null;
 		PrintWriter output = null;
 
+		// Make file if not exists
 		File file = new File(path);
 		if (!file.exists()) {
 			try {
@@ -58,5 +62,4 @@ public class ConsoleWriter {
 			}
 		}
 	}
-
 }

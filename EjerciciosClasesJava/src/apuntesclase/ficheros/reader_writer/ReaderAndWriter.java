@@ -13,12 +13,12 @@ import java.io.PrintWriter;
 
 ///Tarea
 /// Leer por consola hasta que no quede entrada
-/// Por cada ejecucion, añadir contenido al archivo
+/// Por cada ejecucion, añadir contenido al archivo //DONE
 /// 
 ///Tarea
-/// ¿Texto contiene regex?
-/// ¿Repeticiones de regex?
-/// ¿Contar las líneas?
+/// ¿Texto contiene regex?	//DONE
+/// ¿Repeticiones de regex? //DONE
+/// ¿Contar las líneas? //DONE
 ///Simular BD
 ///  crear registros 
 ///  consultar
