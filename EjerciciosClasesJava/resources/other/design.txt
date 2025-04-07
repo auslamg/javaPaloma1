@@ -1,0 +1,17 @@
+//Mvmnt
+Input - WASD
+Input - Jump
+Input - Crouch
+Input - Sprint
+Input - Interact
+Input - LMB
+Input - RMB
+
+Ground - GroundCheck > RampCheck > StairCheck > Move
+Air - GroundCheck > Move
+Jump - GroundCheck > CoyoteTime > BunnyTime > Buffer
+Crouch - SpeedCheck > Slide
+
+Check - GroundCheck
+Check - RampCheck
+Check - StairCheck

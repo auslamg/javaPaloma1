@@ -16,6 +16,7 @@ public class TestBufferReaderConsole {
                 System.out.println(line);
             }
         } catch (IOException e) {
+            System.out.println("ajisfjafio");
             
         }
     }    
