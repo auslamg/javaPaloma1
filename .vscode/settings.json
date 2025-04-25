@@ -10,5 +10,6 @@
         "sideBar.border": "#c71616",
         "tab.activeBorder": "#c71616"
     },
-    "peacock.color": "#991111"
+    "peacock.color": "#991111",
+    "java.configuration.updateBuildConfiguration": "interactive"
 }
