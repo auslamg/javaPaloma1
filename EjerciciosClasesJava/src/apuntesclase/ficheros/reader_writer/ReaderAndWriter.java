@@ -97,13 +97,3 @@ public class ReaderAndWriter {
 	}
 
 }
-
-enum MyEnum {
-	a,
-	b,
-	c;
-
-    private MyEnum() {
-    }
-	
-};

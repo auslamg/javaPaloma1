@@ -34,12 +34,6 @@ class Node<T extends Object> {
         return this.data;
     }
 
-    public void getNext(Node<T> n) {
-    }
-
-    public void setNext(Node<T> n) {
-    }
-
     public boolean equals(Node<T> n) {
         return this.data.equals(n.data);
     }

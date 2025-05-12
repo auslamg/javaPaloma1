@@ -1,6 +1,6 @@
-package ej_examen;
+package apuntesclase.examenFinal;
 
-public class TryTest {
+public class SeguimientoTryCatchFinally {
 
 	public static void main(String[] args) {
 		try {
