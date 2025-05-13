@@ -45,6 +45,7 @@ public class JDBC_Connection {
                     System.out.println("Connection closed.");
                 }
             } catch (SQLException e) {
+                System.out.println("Error al acceder a la base de datos:");
                 e.printStackTrace();
             }
         }

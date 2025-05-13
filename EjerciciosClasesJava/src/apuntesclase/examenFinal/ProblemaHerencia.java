@@ -31,6 +31,6 @@ public class ProblemaHerencia {
         // Resultado => Ejecución correcta (Upcasting válido)
         System.out.println( (p = (Vehículo) pC).metodoVehiculo() );
         //Resultado => Ejecución correcta (Upcasting válido)
-        System.out.println((c = (Coloreable) pC).metodoColorear());
+        System.out.println((c = (Coloreable) p).metodoColorear());
     }
 }
