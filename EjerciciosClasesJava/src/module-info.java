@@ -5,5 +5,5 @@
  * 
  */
 module EjerciciosClasesJava {
-	requires java.sql;
+    requires java.sql;
 }
